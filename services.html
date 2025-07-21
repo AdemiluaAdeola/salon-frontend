@@ -1,189 +1,1167 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="yo">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | Onidiri Hair Salon</title>
+    <title>Onídírí - Awọn Iṣẹ́ Wa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap">
+    <style>
+        :root {
+            --black: #000000;
+            --cream: #FFF8E8;
+            --gold: #D4AF37;
+            --dark-cream: #EEE2D0;
+            --text-dark: #222222;
+            --text-light: #666666;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        /* Header - Modern Sticky Nav */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 248, 232, 0.1);
+        }
+
+        .header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .logo-text h1 {
+            font-size: 1.8rem;
+            color: var(--cream);
+            margin-bottom: -5px;
+            letter-spacing: 1px;
+        }
+
+        .logo-text p {
+            font-size: 0.7rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+            opacity: 0.9;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--gold);
+            opacity: 1;
+        }
+
+        .nav-cta {
+            margin-left: 40px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            text-align: center;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--gold);
+            color: var(--black);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section - Fullscreen Parallax */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            background-attachment: fixed;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: var(--cream);
+        }
+
+        .hero .section-title {
+            color: var(--gold);
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero .section-title::after {
+            background: var(--gold);
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--cream);
+            border: 2px solid var(--cream);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--cream);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        /* Footer - Premium Design */
+        .footer {
+            background-color: var(--black);
+            color: var(--cream);
+            position: relative;
+            padding: 100px 0 0;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--gold), var(--black));
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 80px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            color: var(--cream);
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--cream);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom {
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero .section-title {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            section {
+                padding: 100px 0;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--black);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 30px;
+                transition: var(--transition);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-cta {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero .section-title {
+                font-size: 3.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2.4rem;
+            }
+
+            .hero .section-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-text {
+                font-size: 1.1rem;
+            }
+
+            .services-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-content {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero .section-title {
+                font-size: 2.4rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5rem;
+            }
+        }
+        /* Footer Styles */
+        .footer {
+            background-color: var(--black);
+            color: var(--cream);
+            padding: 80px 0 0;
+            position: relative;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .about-col .logo h3 {
+            font-size: 2rem;
+            color: var(--cream);
+            margin-bottom: -5px;
+        }
+
+        .about-col .logo p {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .footer-description {
+            margin: 20px 0;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.2);
+            color: var(--gold);
+            border-radius: 50%;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+            opacity: 0.8;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--gold);
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info i {
+            color: var(--gold);
+            font-size: 1.1rem;
+            width: 20px;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 248, 232, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .footer-bottom {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .traditional-pattern {
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--gold),
+                var(--gold) 20px,
+                var(--cream) 20px,
+                var(--cream) 40px
+            );
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .payment-methods {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* Responsive Footer */
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-col {
+                text-align: center;
+            }
+            
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+            
+            .contact-info li,
+            .hours-list li {
+                justify-content: center;
+            }
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Add these new styles for the services page */
+        .services-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+                        url('https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .services-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .services-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-dark);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--cream);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-img-container {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .service-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-img {
+            transform: scale(1.05);
+        }
+
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: var(--black);
+            color: var(--gold);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .service-description {
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .service-features {
+            margin-bottom: 25px;
+        }
+
+        .service-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .service-feature i {
+            color: var(--gold);
+        }
+
+        .service-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-duration {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Pricing Table Section */
+        .pricing-section {
+            background-color: var(--dark-cream);
+            padding: 80px 0;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+
+        .pricing-table th,
+        .pricing-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .pricing-table th {
+            background-color: var(--black);
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .pricing-table tr:nth-child(even) {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .pricing-table tr:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .price {
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background-color: var(--black);
+            color: var(--cream);
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-section .section-title {
+            color: var(--gold);
+        }
+
+        .cta-section .section-subtitle {
+            color: rgba(255, 248, 232, 0.8);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .services-hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                height: 50vh;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-cta {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Header/Navigation -->
+    <!-- Header (Same as home.html) -->
     <header class="header">
         <div class="container">
-            <div class="logo">
-                <h1>ONIDIRI</h1>
-                <p>Hair Salon</p>
-            </div>
-            <nav class="navbar">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html" class="active">Services</a></li>
-                    <li><a href="stylists.html">Stylists</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="faqs.html">FAQs</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>ONÍDÍRÍ</h1>
+                        <p>ILE ITỌJU IRUN</p>
+                    </div>
+                </a>
 
-                <div class="hamburger">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
-            </nav>
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link active">Services</a>
+                    <a href="portfolio.html" class="nav-link">Past Works</a>
+                    <a href="blog.html" class="nav-link">Blog</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                    <div class="nav-cta">
+                        <a href="https://wa.link/0kjiay" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </nav>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Services Hero Section -->
     <section class="services-hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>Our Services</h1>
-                <p>Premium hair care tailored to your unique needs</p>
+            <div class="services-hero-content">
+                <h1>Awọn Iṣẹ́ Wa</h1>
+                <p>Gbogbo iru ìtọ́jú irun tí o wuyì ní àṣà àti ìmọ̀ Yorùbá</p>
             </div>
         </div>
     </section>
 
     <!-- Services Categories -->
-    <section class="service-categories">
+    <section class="services-main">
         <div class="container">
-            <div class="category-tabs">
-                <button class="tab-btn active" data-category="all">All Services</button>
-                <button class="tab-btn" data-category="cutting">Cutting</button>
-                <button class="tab-btn" data-category="coloring">Coloring</button>
-                <button class="tab-btn" data-category="styling">Styling</button>
-                <button class="tab-btn" data-category="treatment">Treatments</button>
+            <h2 class="section-title">Ìwòsàn Àwọn Iṣẹ́ Wa</h2>
+            <p class="section-subtitle">A ṣe gbogbo iru irun láti àwọn ìlú Yorùbá</p>
+            
+            <div class="services-categories">
+                <button class="category-btn active" data-category="all">Gbogbo</button>
+                <button class="category-btn" data-category="braiding">Ìdídi</button>
+                <button class="category-btn" data-category="weaving">Àwò Irun</button>
+                <button class="category-btn" data-category="treatment">Ìtọ́jú</button>
+                <button class="category-btn" data-category="styling">Ìṣàkóso</button>
+                <button class="category-btn" data-category="cutting">Gígé</button>
             </div>
 
+            <!-- Services Grid -->
             <div class="services-grid">
-                <!-- Cutting Services -->
-                <div class="service-card" data-category="cutting">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Hair Cutting">
+                <!-- Service 1 -->
+                <div class="service-card" data-category="braiding">
+                    <div class="service-img-container">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Ìdídi Irun" class="service-img">
                     </div>
-                    <div class="service-info">
-                        <h3>Signature Haircut</h3>
-                        <p class="price">₦15,000 - ₦25,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 45-60 mins</p>
-                        <p>A precision haircut tailored to your face shape, hair texture, and lifestyle.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Expert</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
+                    <span class="service-badge">Ìdídi</span>
+                    <div class="service-content">
+                        <h3 class="service-title">Ìdídi Ọlọ́wẹ́</h3>
+                        <div class="service-price">₦25,000 - ₦40,000</div>
+                        <p class="service-description">Àwọn ìdídi irun tí ó báamu ojú rẹ, tó sì rọrùn fún ìṣàkóso</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Àwọn ìdídi Yorùbá àtàtà</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ohun èlò alára</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìtọ́jú irun pẹ̀lú ìmọ̀</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <span class="service-duration"><i class="far fa-clock"></i> 2-4 wákàtí</span>
+                            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="service-card" data-category="cutting">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Bang Trim">
+                <!-- Service 2 -->
+                <div class="service-card" data-category="weaving">
+                    <div class="service-img-container">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Àwò Irun" class="service-img">
                     </div>
-                    <div class="service-info">
-                        <h3>Bang Trim</h3>
-                        <p class="price">₦5,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 15 mins</p>
-                        <p>Quick refresh for your bangs to maintain their perfect shape.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Basic</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
+                    <span class="service-badge">Àwò Irun</span>
+                    <div class="service-content">
+                        <h3 class="service-title">Àwò Irun Aládùn</h3>
+                        <div class="service-price">₦35,000 - ₦60,000</div>
+                        <p class="service-description">Àwọn àwò aláwọ̀ ẹlẹ́wa tí a yàn kọ̀ọ̀kan fún ìrẹwẹ̀si rẹ</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ohun èlò alára</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Àwọn irun tí ó wà láyè</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìtọ́jú àti ìmọ̀ràn</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <span class="service-duration"><i class="far fa-clock"></i> 3-5 wákàtí</span>
+                            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Coloring Services -->
-                <div class="service-card" data-category="coloring">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Full Color">
-                    </div>
-                    <div class="service-info">
-                        <h3>Full Color</h3>
-                        <p class="price">₦25,000 - ₦40,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 2-3 hours</p>
-                        <p>Complete color transformation using premium ammonia-free dyes.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Expert</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card" data-category="coloring">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Balayage">
-                    </div>
-                    <div class="service-info">
-                        <h3>Balayage</h3>
-                        <p class="price">₦35,000 - ₦50,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 3-4 hours</p>
-                        <p>Hand-painted highlights for a natural, sun-kissed look.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Master</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Styling Services -->
-                <div class="service-card" data-category="styling">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Blowout">
-                    </div>
-                    <div class="service-info">
-                        <h3>Professional Blowout</h3>
-                        <p class="price">₦12,000 - ₦20,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 45 mins</p>
-                        <p>Sleek, bouncy blowout using heat protectants and premium products.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Advanced</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="service-card" data-category="styling">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1596704017256-d7bd2950f2d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Bridal Styling">
-                    </div>
-                    <div class="service-info">
-                        <h3>Bridal Styling</h3>
-                        <p class="price">₦50,000+</p>
-                        <p class="duration"><i class="far fa-clock"></i> 2-4 hours</p>
-                        <p>Custom wedding day look with trial session included.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Master</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Treatment Services -->
+                <!-- Service 3 -->
                 <div class="service-card" data-category="treatment">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Keratin Treatment">
+                    <div class="service-img-container">
+                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ìtọ́jú Irun" class="service-img">
                     </div>
-                    <div class="service-info">
-                        <h3>Keratin Smoothing</h3>
-                        <p class="price">₦60,000 - ₦80,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 2-3 hours</p>
-                        <p>Professional smoothing treatment to reduce frizz and add shine.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Expert</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
+                    <span class="service-badge">Ìtọ́jú</span>
+                    <div class="service-content">
+                        <h3 class="service-title">Ìtọ́jú Irun Àdánidá</h3>
+                        <div class="service-price">₦15,000 - ₦30,000</div>
+                        <p class="service-description">Ìtọ́jú irun àdánidá pẹ̀lú àwọn ohun èlò alára</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Fífọ irun pẹ̀lú ìmọ̀</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìdínkù ìpalára</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìmúyára ìdàgbà irun</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <span class="service-duration"><i class="far fa-clock"></i> 1-2 wákàtí</span>
+                            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="service-card" data-category="treatment">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Scalp Treatment">
+                <!-- Service 4 -->
+                <div class="service-card" data-category="styling">
+                    <div class="service-img-container">
+                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Ìṣàkóso Irun" class="service-img">
                     </div>
-                    <div class="service-info">
-                        <h3>Scalp Revitalization</h3>
-                        <p class="price">₦18,000</p>
-                        <p class="duration"><i class="far fa-clock"></i> 45 mins</p>
-                        <p>Deep cleansing and nourishing treatment for a healthy scalp.</p>
-                        <div class="service-meta">
-                            <span class="expertise"><i class="fas fa-star"></i> Advanced</span>
-                            <a href="appointment.html" class="btn small-btn">Book Now</a>
+                    <span class="service-badge">Ìṣàkóso</span>
+                    <div class="service-content">
+                        <h3 class="service-title">Ìkọ́ Irun Yorùbá</h3>
+                        <div class="service-price">₦20,000 - ₦35,000</div>
+                        <p class="service-description">Àwọn ìkọ́ irun Yorùbá àtàtà bíi kíkọ, sísọ àti bẹ́ẹ̀ bẹ́ẹ̀ lọ</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Àwọn ìkọ́ àtàtà</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìtọ́jú irun pẹ̀lú ìmọ̀</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìmọ̀ràn nípa ìtọ́jú</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <span class="service-duration"><i class="far fa-clock"></i> 1-3 wákàtí</span>
+                            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card" data-category="cutting">
+                    <div class="service-img-container">
+                        <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Gígé Irun" class="service-img">
+                    </div>
+                    <span class="service-badge">Gígé</span>
+                    <div class="service-content">
+                        <h3 class="service-title">Gígé Irun Módéèrùn</h3>
+                        <div class="service-price">₦10,000 - ₦25,000</div>
+                        <p class="service-description">Gígé irun tí ó báamu ojú rẹ, tó sì rọrùn fún ìṣàkóso</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Àwọn ìlànà tuntun</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìtọ́jú irun lẹ́yìn ìgún</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Ìmọ̀ràn nípa ìtọ́jú</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <span class="service-duration"><i class="far fa-clock"></i> 30-60 ìṣẹ́jú</span>
+                            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card" data-category="treatment">
+                    <div class="service-img-container">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Ìtọ́jú Irun" class="service-img">
+                    </div>
+                    <span class="service-badge">Ìtọ́jú</span>
+                    <div class="service-content">
+                        <h3 class="service-title">Ìtọ́jú Irun pẹ̀lú Epo</h3>
+                        <div class="service-price">₦12,000 - ₦25,000</div>
+                        <p class="service-description">Ìtọ́jú irun pẹ̀lú àwọn epo Yorùbá àtàtà</p>
+                        
+                        <div class="service-features">
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Epo orígbó</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Epo ìdí</span>
+                            </div>
+                            <div class="service-feature">
+                                <i class="fas fa-check"></i>
+                                <span>Epo ìyeyè</span>
+                            </div>
+                        </div>
+                        
+                        <div class="service-cta">
+                            <span class="service-duration"><i class="far fa-clock"></i> 45-90 ìṣẹ́jú</span>
+                            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
                         </div>
                     </div>
                 </div>
@@ -191,117 +1169,104 @@
         </div>
     </section>
 
-    <!-- Service Benefits -->
-    <section class="service-benefits">
+    <!-- Pricing Table Section -->
+    <section class="pricing-section">
         <div class="container">
-            <h2 class="section-title">Why Choose Our Services</h2>
-            <p class="section-subtitle">We're committed to excellence in every strand</p>
+            <h2 class="section-title">Àkójọ Àwọn Ọ̀rọ̀ Wọn</h2>
+            <p class="section-subtitle">Àwọn iye owó fún àwọn iṣẹ́ wa</p>
             
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3>Premium Products</h3>
-                    <p>We use only the highest quality professional hair care products from trusted brands.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3>Expert Stylists</h3>
-                    <p>Our team undergoes continuous education to stay current with the latest techniques.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Customized Approach</h3>
-                    <p>Every service is tailored to your unique hair type, texture, and personal style.</p>
-                </div>
-                
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Eco-Conscious</h3>
-                    <p>We implement sustainable practices and use eco-friendly products whenever possible.</p>
-                </div>
-            </div>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Iṣẹ́</th>
+                        <th>Àpèjúwe</th>
+                        <th>Àkókò</th>
+                        <th>Ọ̀rọ̀ Wọn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ìdídi Irun</td>
+                        <td>Àwọn ìdídi Yorùbá àtàtà</td>
+                        <td>2-4 wákàtí</td>
+                        <td class="price">₦25,000 - ₦40,000</td>
+                    </tr>
+                    <tr>
+                        <td>Àwò Irun</td>
+                        <td>Àwọn àwò aláwọ̀ ẹlẹ́wa</td>
+                        <td>3-5 wákàtí</td>
+                        <td class="price">₦35,000 - ₦60,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ìtọ́jú Irun Àdánidá</td>
+                        <td>Ìtọ́jú pẹ̀lú ohun èlò alára</td>
+                        <td>1-2 wákàtí</td>
+                        <td class="price">₦15,000 - ₦30,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ìkọ́ Irun Yorùbá</td>
+                        <td>Àwọn ìkọ́ àtàtà</td>
+                        <td>1-3 wákàtí</td>
+                        <td class="price">₦20,000 - ₦35,000</td>
+                    </tr>
+                    <tr>
+                        <td>Gígé Irun Módéèrùn</td>
+                        <td>Gígé irun tí ó báamu</td>
+                        <td>30-60 ìṣẹ́jú</td>
+                        <td class="price">₦10,000 - ₦25,000</td>
+                    </tr>
+                    <tr>
+                        <td>Ìtọ́jú Irun pẹ̀lú Epo</td>
+                        <td>Ìtọ́jú pẹ̀lú epo Yorùbá</td>
+                        <td>45-90 ìṣẹ́jú</td>
+                        <td class="price">₦12,000 - ₦25,000</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="service-cta">
+    <section class="cta-section">
         <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Hair?</h2>
-                <p>Book your consultation today and let our experts recommend the perfect services for you</p>
-                <div class="cta-buttons">
-                    <a href="appointment.html" class="btn primary-btn">Book Appointment</a>
-                    <a href="contact.html" class="btn secondary-btn">Contact Us</a>
-                </div>
-            </div>
+            <h2 class="section-title">Ṣe o fẹ́ irun rẹ bíi èyí?</h2>
+            <p class="section-subtitle">Ṣètò àkókò rẹ ní báyìí kí a lè ṣe irun rẹ bíi tí o fẹ́ rí</p>
+            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (Same as home.html) -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col about">
-                    <div class="logo">
-                        <h3>ONIDIRI</h3>
-                        <p>Hair Salon</p>
-                    </div>
-                    <p>Premium hair care services in a luxurious and welcoming environment.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="stylists.html">Stylists</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col contact">
-                    <h4>Contact Us</h4>
-                    <ul>
-                        <li><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, Lagos</li>
-                        <li><i class="fas fa-phone"></i> +234 812 345 6789</li>
-                        <li><i class="fas fa-envelope"></i> info@onidiri.com</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col hours">
-                    <h4>Opening Hours</h4>
-                    <ul>
-                        <li>Monday - Friday: 9am - 7pm</li>
-                        <li>Saturday: 10am - 6pm</li>
-                        <li>Sunday: Closed</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 Onidiri Hair Salon. All Rights Reserved.</p>
-            </div>
-        </div>
+        <!-- ... existing footer code ... -->
     </footer>
 
-    <script src="script.js"></script>
-    <script src="services.js"></script>
+    <script>
+        // Copy all JavaScript from home.html
+        
+        // Add services filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    serviceCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 </html>

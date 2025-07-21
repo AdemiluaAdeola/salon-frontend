@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="yo">
 <head>
+    <!-- Use same head section as home.html -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onídírí - Ile Itọju Irun Ọlọ́wẹ́</title>
+    <title>Onídírí - Àwọn Iṣẹ́ Tí A Ti Ṣe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap">
     <style>
@@ -984,10 +985,105 @@
                 justify-content: center;
             }
         }
+        
+        .portfolio {
+            background-color: var(--cream);
+            position: relative;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-dark);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: var(--cream);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .portfolio-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Copy the same header from home.html -->
     <header class="header">
         <div class="container">
             <div class="nav-container">
@@ -1002,13 +1098,13 @@
                 </a>
 
                 <nav class="nav-links">
-                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="index.html" class="nav-link">Home</a>
                     <a href="services.html" class="nav-link">Services</a>
-                    <a href="portfolio.html" class="nav-link">Past Works</a>
+                    <a href="portfolio.html" class="nav-link active">Past Works</a>
                     <a href="blog.html" class="nav-link">Blog</a>
-                    <a href="#contact" class="nav-link">Contact Us</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
                     <div class="nav-cta">
-                        <a href="https://wa.link/0kjiay" class="btn btn-primary">Book Appointment</a>
+                        <a href="#" class="btn btn-primary">Book Appointment</a>
                     </div>
                 </nav>
 
@@ -1019,290 +1115,104 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Portfolio Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
         <div class="container">
             <div class="hero-content">
-                <h2 class="section-title">Ìtọ́jú Irun Ọlọ́wẹ́</h2>
-                <p class="hero-text">Iṣẹ́ ìtọ́jú irun tí ó wuyì ní àṣà àti ìmọ̀ Yorùbá. A ni irufin didun ti o dara ju ti o kopa.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Wo Awọn Iṣẹ́</a>
-                    <a href="#contact" class="btn btn-secondary">Pe Wa Lọ́wọ́</a>
-                </div>
+                <h2 class="section-title">Àwọn Iṣẹ́ Tí A Ti Ṣe</h2>
+                <p class="hero-text">Wo àwọn ìṣẹ́ tí a ti ṣe fún àwọn oníbàárà wa. Ẹ jẹ́ kí a ṣe ìrànlọ́wọ́ fún ẹ.</p>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2 class="section-title">Awọn Iṣẹ́ Wa</h2>
-            <p class="section-subtitle">A ṣe gbogbo iru irun láti àwọn ìlú Yorùbá</p>
+            <h2 class="section-title">Ìwòsàn Àwọn Iṣẹ́ Wa</h2>
+            <p class="section-subtitle">Wo àwọn ìṣẹ́ tí a ti ṣe lórí irun àwọn ènìyàn</p>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gígé Irun">
-                    </div>
-                    <div class="service-content">
-                        <span class="service-price">₦15,000 - ₦25,000</span>
-                        <h3 class="service-title">Gígé Irun</h3>
-                        <p>Irun tó báamu ojú rẹ, tó sì rọrùn fún ìṣàkóso</p>
-                        <a href="#" class="read-more">Mọ̀ sii <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Àwò Irun">
-                    </div>
-                    <div class="service-content">
-                        <span class="service-price">₦25,000 - ₦40,000</span>
-                        <h3 class="service-title">Àwò Irun</h3>
-                        <p>Àwọn àwò aláwọ̀ ẹlẹ́wa tí a yàn kọ̀ọ̀kan</p>
-                        <a href="#" class="read-more">Mọ̀ sii <i class="fas fa-chevron-right"></i></a>
+            <div class="portfolio-filter">
+                <button class="filter-btn active" data-filter="all">Gbogbo</button>
+                <button class="filter-btn" data-filter="didi">Ìdídi</button>
+                <button class="filter-btn" data-filter="awo">Àwò Irun</button>
+                <button class="filter-btn" data-filter="iko">Ìkọ́ Irun</button>
+                <button class="filter-btn" data-filter="gige">Gígé Irun</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item" data-category="didi">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Ìdídi Irun" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Ìdídi Ọlọ́wẹ́</h3>
+                        <p class="portfolio-category">Ìdídi</p>
                     </div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Ìkọ́ Irun">
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Àwò Irun" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Àwò Irun Aládùn</h3>
+                        <p class="portfolio-category">Àwò Irun</p>
                     </div>
-                    <div class="service-content">
-                        <span class="service-price">₦35,000 - ₦50,000</span>
-                        <h3 class="service-title">Ìkọ́ Irun</h3>
-                        <p>Àwọn ìkọ́ irun Yorùbá àtàtà bíi kíkọ, sísọ àti bẹ́ẹ̀ bẹ́ẹ̀ lọ</p>
-                        <a href="#" class="read-more">Mọ̀ sii <i class="fas fa-chevron-right"></i></a>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item" data-category="iko">
+                    <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Ìkọ́ Irun" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Ìkọ́ Irun Yorùbá</h3>
+                        <p class="portfolio-category">Ìkọ́ Irun</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item" data-category="gige">
+                    <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gígé Irun" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Gígé Irun Módéèrùn</h3>
+                        <p class="portfolio-category">Gígé Irun</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item" data-category="didi">
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Ìdídi Irun" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Ìdídi Ìbílẹ̀</h3>
+                        <p class="portfolio-category">Ìdídi</p>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Àwò Irun" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Àwò Irun Òde Òní</h3>
+                        <p class="portfolio-category">Àwò Irun</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
+    <!-- CTA Section -->
+    <section class="cta" style="background-color: var(--black); color: var(--cream); padding: 80px 0; text-align: center;">
         <div class="container">
-            <h2 class="section-title">Ẹ̀bùn Ọlọ́rẹ́ Wa</h2>
-            <p class="section-subtitle">Kí àwọn ará ìlú sọ nípa wa</p>
-            
-            <div class="testimonial-slider">
-                <div class="testimonial-track">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Onídírí ti ṣe irun mi l'ọ́nà tí ó dùn mọ́lẹ̀! Wọ́n gbọ́ ohun tí mo ń sọ, wọ́n sì ṣe é dáadáa. Mo ti di alábàáṣe fún ọdún mẹ́ta ati pe emi ko ni yago fun won."</p>
-                            <div class="client-info">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Fúnkẹ́" class="client-avatar">
-                                <div class="client-details">
-                                    <h4>Fúnkẹ́ A.</h4>
-                                    <p>Alábàáṣe fún ọdún 3</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <p class="testimonial-text">"Mo ti ń lọ sí Onídírí fún ọdún mẹ́ta, kò sí ẹni tí mo ní ìgbẹ́kẹ̀lé fún irun mi yàtọ̀ sí wọn. Bísí jẹ́ olùṣọ àwò irun tí ó dára jù lọ ní Èkó!"</p>
-                            <div class="client-info">
-                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Amaka" class="client-avatar">
-                                <div class="client-details">
-                                    <h4>Amaka T.</h4>
-                                    <p>Alábàáṣe Pàtàkì</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div class="testimonial-content">
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <p class="testimonial-text">"Bísí ṣe àwò irun mi l'ọ́nà tí ó dùn mọ́lẹ̀! Èmi àti ọ̀rẹ́ mi ti di alábàáṣe pàtàkì. Ọmọ Yorùbá ni mo jẹ́, mo sì fẹ́ran bí wọ́n ṣe ń ṣe iṣẹ́ wọn ní àṣà wa."</p>
-                            <div class="client-info">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Chioma" class="client-avatar">
-                                <div class="client-details">
-                                    <h4>Chíọma M.</h4>
-                                    <p>Alábàáṣe fún ọdún 2</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slider-nav">
-                <div class="slider-dot active"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
-            </div>
+            <h2 class="section-title" style="color: var(--gold);">Ṣe o fẹ́ irun rẹ bíi èyí?</h2>
+            <p class="section-subtitle" style="color: rgba(255, 248, 232, 0.8); max-width: 700px; margin: 0 auto 40px;">Ṣètò àkókò rẹ ní báyìí kí a lè ṣe irun rẹ bíi tí o fẹ́ rí</p>
+            <a href="#" class="btn btn-primary">Bẹ̀rẹ̀ Nísinsìnyí</a>
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section id="blog" class="blog">
-        <div class="container">
-            <h2 class="section-title">Ìwé Ìròyìn</h2>
-            <p class="section-subtitle">Àwọn ìmọ̀ àti ìtọ́sọ́nà nípa ìtọ́jú irun</p>
-            
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Summer Hair Care">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> Oṣù Kẹfà 15, 2023</span>
-                            <span><i class="far fa-user"></i> Adé</span>
-                        </div>
-                        <h3>Ìtọ́jú Irun ní Ìgbà Ooru</h3>
-                        <p>Bí o ṣe lè dáàbò bo irun rẹ láti ìfura òòrùn àti omi ṣwimming</p>
-                        <a href="#" class="read-more">Ka sii <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="2023 Hair Trends">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> Oṣù Karùn-ún 28, 2023</span>
-                            <span><i class="far fa-user"></i> Bísí</span>
-                        </div>
-                        <h3>Àwọn Àṣà Irun 2023</h3>
-                        <p>Àwọn ìṣàlàyé nípa àwọn àwò irun tí ó wọ́pọ̀ ní ọdún yìí</p>
-                        <a href="#" class="read-more">Ka sii <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="blog-card">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1559599101-f09722fb4948?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Natural Hair">
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> Oṣù Kẹta 22, 2023</span>
-                            <span><i class="far fa-user"></i> Chíọma</span>
-                        </div>
-                        <h3>Ìtọ́jú Irun Àdánidá</h3>
-                        <p>Àwọn ìmọ̀ tó ṣe pàtàkì fún ìtọ́jú irun àdánidá</p>
-                        <a href="#" class="read-more">Ka sii <i class="fas fa-chevron-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
+    <!-- Copy the same footer from home.html -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <!-- About Column -->
-                <div class="footer-col about-col">
-                    <div class="logo">
-                        <h3>ONÍDÍRÍ</h3>
-                        <p>Ile Itọju Irun Ọlọ́wẹ́</p>
-                    </div>
-                    <p class="footer-description">Iṣẹ́ ìtọ́jú irun tí ó wuyì ní àṣà àti ìmọ̀ Yorùbá. A ni irufin didun ti o dara ju ti o kopa.</p>
-                    
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-
-                <!-- Quick Links Column -->
-                <div class="footer-col links-col">
-                    <h4>Ọ̀nà Kíkàn</h4>
-                    <ul>
-                        <li><a href="index.html">Ilé</a></li>
-                        <li><a href="#services">Awọn Iṣẹ́</a></li>
-                        <li><a href="#stylists">Onídírí</a></li>
-                        <li><a href="#blog">Ìròyìn</a></li>
-                        <li><a href="#">Ìbéèrè</a></li>
-                        <li><a href="contact.html">Bá Wa Sọ̀rọ̀</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Column -->
-                <div class="footer-col contact-col">
-                    <h4>Bá Wa Sọ̀rọ̀</h4>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Ojà Ìwà, Èkó, Nàìjíríà</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+234 812 345 6789</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@onidiri.com</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Hours Column -->
-                <div class="footer-col hours-col">
-                    <h4>Àkókò Iṣẹ́</h4>
-                    <ul class="hours-list">
-                        <li>
-                            <span>Ọjọ́ Ajé - Ọjọ́ Ẹtì:</span>
-                            <span>9am - 7pm</span>
-                        </li>
-                        <li>
-                            <span>Ọjọ́ Àbámẹ́ta:</span>
-                            <span>10am - 6pm</span>
-                        </li>
-                        <li>
-                            <span>Ọjọ́ Àìkú:</span>
-                            <span>Pípé</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="traditional-pattern"></div>
-                <p>&copy; <span id="year"></span> Onídírí Hair Salon. Gbogbo Ẹ̀tọ́ wà fún wọn.</p>
-                <div class="payment-methods">
-                    <i class="fab fa-cc-visa"></i>
-                    <i class="fab fa-cc-mastercard"></i>
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-            </div>
-        </div>
+        <!-- ... existing footer code ... -->
     </footer>
 
-
     <script>
-        // Mobile Menu Toggle
+                // Mobile Menu Toggle
         const menuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');
 
@@ -1342,6 +1252,30 @@
         window.addEventListener('scroll', () => {
             const header = document.querySelector('.header');
             header.classList.toggle('sticky', window.scrollY > 50);
+        });
+        // Add portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
         });
     </script>
 </body>
