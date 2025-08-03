@@ -1060,3 +1060,56 @@
         .faq-cta a:hover {
             text-decoration: underline;
         }
+        /* Add these styles to your existing portfolio styles */
+        .portfolio-media {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.8);
+            border: none;
+            color: var(--black);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            opacity: 0;
+        }
+
+        .portfolio-item:hover .video-play-btn {
+            opacity: 1;
+        }
+
+        .video-play-btn:hover {
+            background: var(--gold);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        /* Video playing state */
+        .portfolio-item.video-playing .portfolio-overlay {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .portfolio-item.video-playing .video-play-btn {
+            display: none;
+        }

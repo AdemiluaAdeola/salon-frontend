@@ -64,3 +64,53 @@
                 }
             });
         });
+        // Video Playback Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoItems = document.querySelectorAll('.portfolio-video');
+            const videoPlayBtns = document.querySelectorAll('.video-play-btn');
+            
+            videoPlayBtns.forEach((btn, index) => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const portfolioItem = this.closest('.portfolio-item');
+                    const video = portfolioItem.querySelector('video');
+                    
+                    // Pause all other videos
+                    document.querySelectorAll('.portfolio-video').forEach(v => {
+                        if (v !== video) {
+                            v.pause();
+                            v.closest('.portfolio-item').classList.remove('video-playing');
+                        }
+                    });
+                    
+                    if (video.paused) {
+                        video.play();
+                        portfolioItem.classList.add('video-playing');
+                    } else {
+                        video.pause();
+                        portfolioItem.classList.remove('video-playing');
+                    }
+                });
+            });
+            
+            // Pause video when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.portfolio-media')) {
+                    document.querySelectorAll('.portfolio-video').forEach(video => {
+                        video.pause();
+                        video.closest('.portfolio-item').classList.remove('video-playing');
+                    });
+                }
+            });
+            
+            // Pause video when scrolling away
+            window.addEventListener('scroll', function() {
+                document.querySelectorAll('.portfolio-video').forEach(video => {
+                    const rect = video.getBoundingClientRect();
+                    if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                        video.pause();
+                        video.closest('.portfolio-item').classList.remove('video-playing');
+                    }
+                });
+            });
+        });
