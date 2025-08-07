@@ -976,12 +976,12 @@
             }
         }
 
-        /* FAQ Section Styles */
+                /* FAQ Section Styles */
         .faq {
             background-color: var(--cream);
             position: relative;
         }
-
+        
         .faq::before {
             content: '';
             position: absolute;
@@ -992,12 +992,12 @@
             background: linear-gradient(to bottom, var(--black), transparent);
             opacity: 0.05;
         }
-
+        
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
-
+        
         .faq-item {
             margin-bottom: 15px;
             border-radius: 10px;
@@ -1005,7 +1005,7 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border: 1px solid rgba(0, 0, 0, 0.05);
         }
-
+        
         .faq-question {
             width: 100%;
             padding: 20px 25px;
@@ -1020,19 +1020,19 @@
             cursor: pointer;
             transition: var(--transition);
         }
-
+        
         .faq-question:hover {
             background-color: var(--dark-cream);
         }
-
+        
         .faq-question i {
             transition: var(--transition);
         }
-
+        
         .faq-question.active i {
             transform: rotate(180deg);
         }
-
+        
         .faq-answer {
             padding: 0 25px;
             max-height: 0;
@@ -1040,25 +1040,25 @@
             transition: max-height 0.3s ease;
             background-color: var(--dark-cream);
             color: black;
-            font-weight: bold;
+            font-weight: 300;
         }
-
+        
         .faq-answer p {
             padding: 20px 0;
         }
-
+        
         .faq-cta {
             text-align: center;
             margin-top: 50px;
         }
-
+        
         .faq-cta a {
             color: var(--gold);
             font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
         }
-
+        
         .faq-cta a:hover {
             text-decoration: underline;
         }
