@@ -1,205 +1,116 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Navigation Toggle
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    
-    hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-    
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        });
-    });
-    
-    // Sticky Header on Scroll
-    const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-    
-    // FAQ Accordion
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const faqItem = question.parentElement;
-            const faqAnswer = question.nextElementSibling;
-            
-            // Close all other FAQ items
-            document.querySelectorAll('.faq-item').forEach(item => {
-                if (item !== faqItem) {
-                    item.querySelector('.faq-question').classList.remove('active');
-                    item.querySelector('.faq-answer').style.maxHeight = null;
-                }
-            });
-            
-            // Toggle current FAQ item
-            question.classList.toggle('active');
-            
-            if (question.classList.contains('active')) {
-                faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
-            } else {
-                faqAnswer.style.maxHeight = null;
-            }
-        });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-    
-    // Initialize scroll reveal animations
-    const sr = ScrollReveal({
-        origin: 'top',
-        distance: '30px',
-        duration: 1000,
-        reset: true
-    });
-    
-    sr.reveal('.service-card, .stylist-card, .testimonial-card, .blog-card', {
-        interval: 200
-    });
-});
+// Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Service Category Filtering
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const serviceCards = document.querySelectorAll('.service-card');
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const category = this.dataset.category;
-            
-            // Filter services
-            serviceCards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-    });
-    
-    // Initialize Isotope for filtering (if you want more advanced filtering)
-    // You would need to include Isotope library for this to work
-    /*
-    const iso = new Isotope('.services-grid', {
-        itemSelector: '.service-card',
-        layoutMode: 'fitRows'
-    });
-    
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            tabBtns.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filterValue = this.dataset.category;
-            if (filterValue === 'all') {
-                iso.arrange({ filter: '*' });
-            } else {
-                iso.arrange({ filter: `[data-category="${filterValue}"]` });
-            }
-        });
-    });
-    */
-    
-    // Scroll reveal animations
-    const sr = ScrollReveal({
-        origin: 'bottom',
-        distance: '30px',
-        duration: 1000,
-        reset: true
-    });
-    
-    sr.reveal('.service-card, .benefit-card', {
-        interval: 200
-    });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Stylist Filtering
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const stylistCards = document.querySelectorAll('.stylist-card');
-    
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterBtns.forEach(btn => btn.classList.remove('active'));
-            
-            // Add active class to clicked button
-            this.classList.add('active');
-            
-            const filter = this.dataset.filter;
-            
-            // Filter stylists
-            stylistCards.forEach(card => {
-                if (filter === 'all' || card.dataset.category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
-    });
-    
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
+
+        // Sticky header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            header.classList.toggle('sticky', window.scrollY > 50);
         });
-    });
-    
-    // Scroll reveal animations
-    const sr = ScrollReveal({
-        origin: 'bottom',
-        distance: '30px',
-        duration: 1000,
-        reset: true
-    });
-    
-    sr.reveal('.stylist-card, .testimonial-card', {
-        interval: 200
-    });
-});
+
+                // FAQ Accordion Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = question.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== question) {
+                        q.classList.remove('active');
+                        q.nextElementSibling.style.maxHeight = null;
+                    }
+                });
+                
+                // Toggle current FAQ
+                question.classList.toggle('active');
+                
+                if (!isOpen) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    answer.style.maxHeight = null;
+                }
+            });
+        });
+        // Video Playback Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoItems = document.querySelectorAll('.portfolio-video');
+            const videoPlayBtns = document.querySelectorAll('.video-play-btn');
+            
+            videoPlayBtns.forEach((btn, index) => {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const portfolioItem = this.closest('.portfolio-item');
+                    const video = portfolioItem.querySelector('video');
+                    
+                    // Pause all other videos
+                    document.querySelectorAll('.portfolio-video').forEach(v => {
+                        if (v !== video) {
+                            v.pause();
+                            v.closest('.portfolio-item').classList.remove('video-playing');
+                        }
+                    });
+                    
+                    if (video.paused) {
+                        video.play();
+                        portfolioItem.classList.add('video-playing');
+                    } else {
+                        video.pause();
+                        portfolioItem.classList.remove('video-playing');
+                    }
+                });
+            });
+            
+            // Pause video when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.portfolio-media')) {
+                    document.querySelectorAll('.portfolio-video').forEach(video => {
+                        video.pause();
+                        video.closest('.portfolio-item').classList.remove('video-playing');
+                    });
+                }
+            });
+            
+            // Pause video when scrolling away
+            window.addEventListener('scroll', function() {
+                document.querySelectorAll('.portfolio-video').forEach(video => {
+                    const rect = video.getBoundingClientRect();
+                    if (rect.bottom < 0 || rect.top > window.innerHeight) {
+                        video.pause();
+                        video.closest('.portfolio-item').classList.remove('video-playing');
+                    }
+                });
+            });
+        });

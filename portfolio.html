@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="yo">
+<head>
+    <!-- Use same head section as home.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onídírí - Our Past Works</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .portfolio {
+            background-color: var(--cream);
+            position: relative;
+        }
+        
+        .portfolio-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--text-dark);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: var(--cream);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .portfolio-category {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Copy the same header from home.html -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>ONÍDÍRÍ</h1>
+                    </div>
+                </a>
+
+                <nav class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="portfolio.html" class="nav-link active">Past Works</a>
+                    <a href="contact.html" class="nav-link">Contact Us</a>
+                    <div class="nav-cta">
+                        <a href="https://wa.link/al6mp8" class="btn btn-primary">Book Appointment</a>
+                    </div>
+                </nav>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Hero Section -->
+    <section class="hero" style="min-height: 60vh;">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="section-title">Our Past Works</h2>
+                <p class="hero-text">View the work we've done for our clients. Let us help you too.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Work Gallery</h2>
+            <p class="section-subtitle">View the work we've done on people's hair</p>
+            
+            <div class="portfolio-grid">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-item" data-category="didi">
+                    <img src="media/1.JPG" alt="Hair Braiding" class="portfolio-img">
+                    <!-- <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Expert Hair Braiding</h3>
+                        <p class="portfolio-category">Braiding</p>
+                    </div> -->
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/o.DNG" alt="Hair Weaving" class="portfolio-img">
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-item" data-category="iko">
+                    <img src="media/e.JPG" alt="Hair Twisting" class="portfolio-img">
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-item" data-category="gige">
+                    <img src="media/n.JPG" alt="Hair Cutting" class="portfolio-img">
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="portfolio-item" data-category="didi">
+                    <img src="media/p.png" alt="Hair Braiding" class="portfolio-img">
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/7.PNG" alt="Hair Weaving" class="portfolio-img">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/a.JPG" alt="Hair Weaving" class="portfolio-img">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/aa.png" alt="Hair Weaving" class="portfolio-img">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/ab.png" alt="Hair Weaving" class="portfolio-img">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/ac.png" alt="Hair Weaving" class="portfolio-img">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/ad.png" alt="Hair Weaving" class="portfolio-img">
+                </div>
+
+                <!-- Portfolio Item 6 -->
+                <div class="portfolio-item" data-category="awo">
+                    <img src="media/ae.png" alt="Hair Weaving" class="portfolio-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" style="background-color: var(--black); color: var(--cream); padding: 80px 0; text-align: center;">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--gold);">Do you want your hair like this?</h2>
+            <p class="section-subtitle" style="color: rgba(255, 248, 232, 0.8); max-width: 700px; margin: 0 auto 40px;">Book your appointment now so we can style your hair just how you want it</p>
+            <a href="https://wa.link/al6mp8" class="btn btn-primary">Get Started Now</a>
+        </div>
+    </section>
+
+   <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- About Column -->
+                <div class="footer-col about-col">
+                    <div class="logo">
+                        <h3>ONÍDÍRÍ</h3>
+                    </div>
+                    <p class="footer-description">
+                        We have an exquisite taste that's better than ordinary. With premiuum hair care and expertise, we are the best in the business.
+                    </p>
+                    
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/oniidiri?igsh=MW05OTNoZmJxNDFy&utm_source=qr" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:Onidiiri@gmail.com" aria-label="Email Onidiiri">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://wa.link/al6mp8" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Column -->
+                <div class="footer-col links-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="portfolio.html">Past Works</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Column -->
+                <div class="footer-col contact-col">
+                    <h4>Contact Us</h4>
+                    <ul class="contact-info">
+                        <!-- <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>123 Character Market, Lagos, Nigeria</span>
+                        </li> -->
+                        <li>
+                            <i class="fas fa-phone-alt"></i>
+                            <span>+447438605154</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>Onidiiri@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Hours Column -->
+                <div class="footer-col hours-col">
+                    <h4>Business Hours</h4>
+                    <ul class="hours-list">
+                        <li>
+                            <span>Monday - Thursday:</span>
+                            <span>9am - 7pm</span>
+                        </li>
+                        <li>
+                            <span>Friday:</span>
+                            <span>10am - 6pm</span>
+                        </li>
+                        <li>
+                            <span>Sunday:</span>
+                            <span>Closed</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="traditional-pattern"></div>
+                <p>&copy; <span id="year"></span> Onídírí Hair Salon. All Rights Reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Add portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
