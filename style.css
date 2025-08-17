@@ -204,6 +204,8 @@
             position: relative;
             overflow: hidden;
             padding-top: 80px;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)), 
+            url('https://res.cloudinary.com/dkiqom9qm/image/upload/v1755445316/o_ngzwhw.jpg') no-repeat center center/cover;
         }
 
         .hero::before {
